@@ -1,0 +1,67 @@
+% sample main.tex created 2015-03-26 by bob jantzen
+\documentclass{ws-procs975x65}
+% optional packages
+%\usepackage{graphicx}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% a few author defined macros like:
+\def\beq{\begin{equation}}
+\def\eeq{\end{equation}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+\title{Short Sample Template File for MG14: \\ Include Full First Names}
+\author{Andrew B. Author$^*$ and Charles D. Author}
+
+\address{University Department, University Name,\\
+City, State ZIP/Zone, Country\\
+$^*$E-mail: ab\_author@university.com\\
+www.university\_name.edu}
+
+\author{Anthony N. Author} 
+
+\address{Group, Laboratory, Street,\\
+City, State ZIP/Zone, Country\\
+E-mail: an\_author@laboratory.com}
+
+\begin{abstract}
+This article gives a quick template to insert the correct titlepage 
+material at the top of the standard more commonly known article.cls style formatting which is similar to many journal styles apart from titlepage details. The MG variation of the World Scientific proceedings macros removes the white space above the title, to give more text space for short articles.
+\end{abstract}
+
+\keywords{Sample file; \LaTeX; MG14 Proceedings; World Scientific Publishing.}
+
+\bodymatter
+
+%%%%%%%%%%%%%%%%% now a standard article style for the most part
+
+\section{The First Section: Titles are Capitalized with the Usual First Letter Rules}
+\subsection{Subsections only have the first letter of the entire title capitalized}
+
+Subsections only have the first letter of the first word capitalized (except for words that are naturally capitalized). For a very short contribution it is not necessary to use the sectioning commands.
+
+You may also use the ``graphicx" package and use its related commands if you are already familiar with that figure insertion method. Word template files are discouraged, allowed as a last resort for those people who have some difficulties with \LaTeX.
+
+Since the World Scientific proceedings style \cite{ws} uses numbered superscript citations of the bibliography items, one has to be careful to use 
+\verb|\refcite| to get a baseline normal size number to include in an in-line direct reference, best formatted in the style: 
+ ``see Ref.$\sim$\verb|\refcite|\{\ldots\}" while normal superscript citations follow punctuation  as in ``.\verb|\cite|\{\ldots\}"  For example, here is an in line citation to Ref.~\refcite{arxiv}. On the other hand citations at the end of a sentence are done line this.\cite{lamp94}
+
+\subsection{You can safely ignore this}
+
+The white space above the title in the ws-procs975x65.cls document style is eliminated by commenting out two lines in the definition of the macro \verb|\title|, namely:\\  
+ \verb|\vspace|*\{-14pt\} \\ \verb|\vskip| 59pt\\
+but you do not need to know this if you use the proceedings style files downloaded from the MG14 website. This gives a bit more space for text content in short articles.
+
+For MG14 \cite{mg14} only a preview PDF document will be collected (exported from your \LaTeX\ document) before the meeting takes place.
+
+\section*{Acknowledgments}
+
+What a debt we all owe to Donald Knuth for his gift of \TeX\ to us and to Leslie Lamport as well for its \LaTeX\ child.
+
+
+\bibliographystyle{ws-procs975x65}
+\bibliography{bibl}
+
+\end{document}
+
