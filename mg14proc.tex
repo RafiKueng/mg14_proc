@@ -34,6 +34,8 @@
 \newcommand{\spl}{SpaghettiLens\xspace}
 \newcommand{\sw}{Space Warps\xspace}
 
+\newcommand{\Msun}{\ensuremath{\text{M}_\odot}\xspace}
+
 \newcommand{\Mlens}{\ensuremath{\text{M}_\text{lens}}\xspace}
 \newcommand{\Mstel}{\ensuremath{\text{M}_\odot}\xspace}
 
@@ -82,33 +84,54 @@
 \title{Lensing Galaxies in the CFHT Legacy Survey}
 
 \author{
-Rafael Küng,$^{1}$
-Prasenjit Saha,$^{1}$
-Anupreeta More,$^{2}$
-Elisabeth Baeten,$^{3}$
-Jonathan Coles,$^{4}$
-Claude Cornen,$^{3}$
-Christine Macmillan,$^{3}$
-Phil Marshall,$^{5}$ 
-Surhud More,$^{2}$
-Jonas Odermatt,$^{6}$
-Aprajita Verma$^{7}$
-and Julianne K. Wilcox$^{3}$
+  Rafael Küng$^*$, Prasenjit Saha
+}
+\address{
+Physik-Institut, University of Zürich,\\
+Winterthurerstrasse 190, 8057 Zürich, Switzerland\\
+$^*$E-mail: rafael\_kueng@uzh.ch
+}
+\author{
+  Anupreeta More, Surhud More
+}
+\address{
+  Kavli Institute for the Physics and Mathematics of the Universe, University of Tokyo\\ 5-1-5 Kashiwanoha, Kashiwa-shi 277-8583, Japan
 }
 
-\address{
-% Physik-Institut, University of Zürich,\\
-% 8057 Zürich, Switzerland\\
-% $^*$E-mail: rafael\_kueng@uzh.ch\\
-% www.uzh.ch
-$^{1}$Physik-Institut, University of Zurich, Winterthurerstrasse 190, 8057 Zurich, Switzerland\\
-$^{2}$Kavli Institute for the Physics and Mathematics of the Universe, University of Tokyo, 5-1-5 Kashiwanoha, Kashiwa-shi 277-8583, Japan\\
-$^{3}$Zooniverse, c/o Astrophysics Department, University of Oxford, Oxford OX1 3RH, UK \\
-$^{4}$Exascale Research Computing Lab, Campus Teratec, 2 Rue de la Piquetterie, 91680 Bruyeres-le-Chatel, France\\
-$^{5}$Kavli Institute for Particle Astrophysics and Cosmology, Stanford University, 452 Lomita Mall, Stanford, CA 94035, USA\\
-$^{6}$Kantonsschule Zug, L\"ussiweg 24, 6300 Zug, Switzerland\\
-$^{7}$Sub-department of Astrophysics, University of Oxford, Denys Wilkinson Building, Keble Road, Oxford, OX1 3RH, UK
+\author{
+  Elisabeth Baeten, Claude Cornen, Christine Macmillan, Julianne K. Wilcox
 }
+\address{
+  Zooniverse, c/o Astrophysics Department, University of Oxford\\
+  Oxford OX1 3RH, UK
+}
+
+\author{
+  Jonathan Coles
+}
+\address{
+  Exascale Research Computing Lab, Campus Teratec,\\
+  2 Rue de la Piquetterie, 91680 Bruyeres-le-Chatel, France
+}
+
+\author{
+  Phil Marshall
+}
+\address{
+  Kavli Institute for Particle Astrophysics and Cosmology, Stanford University\\
+  452 Lomita Mall, Stanford, CA 94035, USA
+}
+
+\author{
+  Aprajita Verma
+}
+\address{
+  Sub-department of Astrophysics, University of Oxford, Denys Wilkinson Building\\
+  Keble Road, Oxford, OX1 3RH, UK
+}
+
+
+
 
 
 % \title{Short Sample Template File for MG14: \\ Include Full First Names}
@@ -155,32 +178,98 @@ presented.
 
 
 \section{Introduction}
-as written in \icite{sw1} blabla
+
+\begin{itemize}
+  \item NOW:
+  \item CHFT LS: 150 deg$^2$
+  \item 50000 volunteers, 11mio classifications
+  \item 59 candidates found
+  \item 1 lens every few deg$^2 $
+  \item FUTURE:
+  \item DES Pan-STARRS (x10); LSST, Euclid (2020+, again x10)
+  \item leads to 10'000 lenses over next 10 years
+  \item order of one per hour
+\end{itemize}
+
+Detecting lenses: robots + \sw
+
+post processing (modelling): robots? no; citicen science!
+
+Theory (short summary from \icite{Kueng2015})
+
+Arrival time / Time delay.
+\begin{equation}  \label{eq:tarriv}
+t(x,y) = t_{\rm geom} + t_{\rm grav}
+\end{equation}
+
+With the geometrical time delay / change of flight path
+\begin{equation} \label{eq:tgeom}
+\tgeom(x,y) \propto (x-x_s)^2 + (y-y_s)^2 ,
+\end{equation}
+
+And the delay due to general relativity
+\begin{equation} \label{eq:tgrav}
+\tgrav(x,y) = \left\langle \tgrav(x_\subcirc,y_\subcirc) \right\rangle
+              + (1+z_L) \frac{2G}{c^3} M(x_\subbullet,y_\subbullet) \,.
+\end{equation}
+
+t(x,y) is an arrival time countour
+can be modelled by skeching self intersecting contour lines.
+Sampling techique described in detail in \icite{Lubini2012}.
+A spaghetti lens model is en ensemble of 200 models, uncertainty is the range covered by the ensemble.
+
+
+
 
 \section{Creating and Selecting Modells}
 
-\section{Determing Lensing Mass}
+describe modelling tree
 
-\section{Determing Stellar Mass}
+\begin{figure}
+  \centering
+  \includegraphics[width=0.8\columnwidth]{img/modeltree}
+  \caption{
+    modelltree
+  }
+  \label{fig:tree}
+\end{figure}
+
+for this analysis, models from the tree were selected manually by inspection by PS, RK and the community.
+
+
+\section{Determing Lensing and Stellar Mass}
+
+The lensing mass can directly be extracted from the generated models, as the mass distribution is the key feature that is being modelled (\icite{Kueng2015}).
+Since a single model actually consists of an ensemble of a number of models, where each one is a possible configuration, we get an approximation of the error by selecting the models with minimal/ maximal total mass as lower / upper bounds for the errors.
+
+We estimated the stellar mass with:
+\[
+  \Mstel = 10^{0.4 [\operatorname{mag}(z_\text{ph}) - m_\text{i}]}
+\]
+where
+$z_\text{ph}$ and $m_\text{i}$ are the photometric redshift and luminosity given in \icite{sw2} and 
+$\operatorname{mag}()$ is a function obtained by interpolating data of SDSS-i magnitude (AB) of 1\Msun and actual mass vs redshift provided by I. Ferreras, which is based on the BC03 models (\icite{Bruzual2003}), Salpeter Initial Mass Function and assumes ``vanilla cosmology'' ($\Omega_\text{M}=0.3$, $\Omega_\Lambda=0.7$).
+For the lower bound of the error we assumed a young population (0.5 Gyr), whereas for the upper one of 2 Gyr.
 
 
 \section{Conclusions}
 
-In this work we use the method presented and tested in \icite{kueng2015} to create models of all lens candidates discovered by \icite{sw2}.
-We determine the total (lensing) mass \Mlens of the candidates using the generated models and the stellar mass \Mstel using an interpolation with redshifts given in \icite{sw2} and the Salpeter Initial Mass Function (\icite{Salpeter1955}).
-We then plot the masses of the candidates and observe in \figref{frac}, that the stellar mass fraction is of the order of 20\%, with decreasing trend for the most massive galaxies, as expected for early type galaxies.
+In this work we use the method presented and tested in \icite{Kueng2015} to create models of all lens candidates discovered by \icite{sw2}.
+We determine the total (lensing) mass \Mlens of the candidates using the generated models and the stellar mass \Mstel using an interpolation of a Salpeter Initial Mass Function (\icite{Salpeter1955}) with redshifts and luminosity magnitudes given in \icite{sw2}.
+We then plot the masses of the candidates and observe in \figref{frac} that the stellar mass fraction is of the order of 20\%, with decreasing trend for the most massive galaxies, as expected for early type galaxies.
 We identify outliers with very low stellar masses that need further inspection.
 
 \begin{figure}
-\centering
-\includegraphics[width=0.8\columnwidth]{img/plot}
-\caption{Stellar Mass \Mstel vs. Lensing Mass \Mlens. Stellar Mass errors are the difference between junior and senior population, Lensing Mass errors represent the minimum and maximum values of an ensemble (``a model'').}
-\label{fig:frac}
+  \centering
+  \includegraphics[width=0.8\columnwidth]{img/plot}
+  \caption{Stellar Mass \Mstel vs. Lensing Mass \Mlens. Stellar Mass errors are the difference between junior (0.5 Gyr) and senior (2 Gyr) population; Lensing Mass errors represent the minimum and maximum values of an ensemble (``a model'').}
+  \label{fig:frac}
 \end{figure}
 
 
-%\section*{Acknowledgments}
-
+\section*{Acknowledgments}
+RK thanks the Candoc Grant (UZH Forschungskredit) for their support of this work.
+Addidionally we thank Ignacio Ferreras for the stellar mass tables.
 
 \bibliographystyle{ws-procs975x65}
 \bibliography{ms}
