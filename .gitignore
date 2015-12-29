@@ -137,3 +137,6 @@ sympy-plots-for-*.tex/
 
 ## OS stuff
 .directory
+*.backup
+
+mg14proc.pdf

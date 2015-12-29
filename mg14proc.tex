@@ -1,67 +1,216 @@
 % sample main.tex created 2015-03-26 by bob jantzen
 \documentclass{ws-procs975x65}
 % optional packages
-%\usepackage{graphicx}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{xspace}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % a few author defined macros like:
-\def\beq{\begin{equation}}
-\def\eeq{\end{equation}}
+%\def\beq{\begin{equation}}
+%\def\eeq{\end{equation}}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% shortcuts for pubs
+\newcommand{\apj}{ApJ}
+\newcommand{\apjs}{ApJS}
+\newcommand{\apjl}{ApJL}
+\newcommand{\aap}{A{\&}A}
+\newcommand{\aaps}{A{\&}AS}
+\newcommand{\mnras}{MNRAS}
+\newcommand{\aj}{AJ}
+\newcommand{\araa}{ARAA}
+\newcommand{\pasp}{PASP}
+\newcommand{\pasj}{PASJ}
+\newcommand{\nat}{Nature}
+\newcommand{\nar}{New Astr Rev}
+
+
+% makes it easier to have consistent writing, and easy change if needed
+\newcommand{\spl}{SpaghettiLens\xspace}
+\newcommand{\sw}{Space Warps\xspace}
+
+\newcommand{\Mlens}{\ensuremath{\text{M}_\text{lens}}\xspace}
+\newcommand{\Mstel}{\ensuremath{\text{M}_\odot}\xspace}
+
+% shortcut for einstein radius (Text Greek Full Math)
+\newcommand{\ERf}[1][]{$\Theta_\text{E#1}$\xspace} % full output
+%\newcommand{\ER}{Einstein radius\xspace} % text
+%\newcommand{\ERg}[1][]{$\Theta_{\text{E#1}}$\xspace} % er in textmode with greek
+%\newcommand{\ERm}[1][]{\Theta_\text{E#1}} % mathmode with greek symbol
+%\newcommand{\kenc}[1][r]{$\kappa_\text{encl}(#1)$\xspace}
+%\newcommand{\kap}[1][r]{$\kappa(#1)$\xspace}
+
+% shorcuts for refs and citations
+\newcommand{\icite}[1]{Ref.~\refcite{#1}} % *I*nline citation
+\newcommand{\scite}[1]{\cite{#1}} % end of *S*entence citation
+
+\newcommand{\figref}[1]{Figure~\ref{fig:#1}}
+
+%\newcommand{\fref}[1]{\ref{fig:#1}}
+%\newcommand{\sref}[1]{\ref{sec:#1}}
+%\newcommand{\tref}[1]{\ref{tab:#1}}
+%\newcommand{\secref}[1]{Section~\ref{sec:#1}}
+%\newcommand{\tabref}[1]{Table~\ref{tab:#1}}
+%\newcommand{\Figref}[1]{Figure~\ref{fig:#1}}
+%\newcommand{\Secref}[1]{Section~\ref{sec:#1}}
+%\newcommand{\Tabref}[1]{Table~\ref{tab:#1}}
+
+
+% shortcut for ASW000xxxx
+\newcommand{\asw}[1]{ASW000#1\xspace}
+\newcommand{\model}[2][Model~]{#1#2\xspace}
+
+
+\newcommand{\dgr}{^{\circ}}
+\newcommand{\tgeom}{t_{\rm geom}}
+\newcommand{\tgrav}{t_{\rm grav}}
+\newcommand{\subcirc}{{\lower.33ex\hbox{$\circ$}}}
+\newcommand{\subbullet}{{\lower.33ex\hbox{$\bullet$}}}
+
+
+
 
 \begin{document}
 
-\title{Short Sample Template File for MG14: \\ Include Full First Names}
-\author{Andrew B. Author$^*$ and Charles D. Author}
 
-\address{University Department, University Name,\\
-City, State ZIP/Zone, Country\\
-$^*$E-mail: ab\_author@university.com\\
-www.university\_name.edu}
 
-\author{Anthony N. Author} 
+\title{Lensing Galaxies in the CFHT Legacy Survey}
 
-\address{Group, Laboratory, Street,\\
-City, State ZIP/Zone, Country\\
-E-mail: an\_author@laboratory.com}
+\author{
+Rafael Küng,$^{1}$
+Prasenjit Saha,$^{1}$
+Anupreeta More,$^{2}$
+Elisabeth Baeten,$^{3}$
+Jonathan Coles,$^{4}$
+Claude Cornen,$^{3}$
+Christine Macmillan,$^{3}$
+Phil Marshall,$^{5}$ 
+Surhud More,$^{2}$
+Jonas Odermatt,$^{6}$
+Aprajita Verma$^{7}$
+and Julianne K. Wilcox$^{3}$
+}
+
+\address{
+% Physik-Institut, University of Zürich,\\
+% 8057 Zürich, Switzerland\\
+% $^*$E-mail: rafael\_kueng@uzh.ch\\
+% www.uzh.ch
+$^{1}$Physik-Institut, University of Zurich, Winterthurerstrasse 190, 8057 Zurich, Switzerland\\
+$^{2}$Kavli Institute for the Physics and Mathematics of the Universe, University of Tokyo, 5-1-5 Kashiwanoha, Kashiwa-shi 277-8583, Japan\\
+$^{3}$Zooniverse, c/o Astrophysics Department, University of Oxford, Oxford OX1 3RH, UK \\
+$^{4}$Exascale Research Computing Lab, Campus Teratec, 2 Rue de la Piquetterie, 91680 Bruyeres-le-Chatel, France\\
+$^{5}$Kavli Institute for Particle Astrophysics and Cosmology, Stanford University, 452 Lomita Mall, Stanford, CA 94035, USA\\
+$^{6}$Kantonsschule Zug, L\"ussiweg 24, 6300 Zug, Switzerland\\
+$^{7}$Sub-department of Astrophysics, University of Oxford, Denys Wilkinson Building, Keble Road, Oxford, OX1 3RH, UK
+}
+
+
+% \title{Short Sample Template File for MG14: \\ Include Full First Names}
+% \author{Andrew B. Author$^*$ and Charles D. Author}
+% 
+% \address{University Department, University Name,\\
+% City, State ZIP/Zone, Country\\
+% $^*$E-mail: ab\_author@university.com\\
+% www.university\_name.edu}
+% 
+% \author{Anthony N. Author} 
+% 
+% \address{Group, Laboratory, Street,\\
+% City, State ZIP/Zone, Country\\
+% E-mail: an\_author@laboratory.com}
+
+
+
+
 
 \begin{abstract}
-This article gives a quick template to insert the correct titlepage 
-material at the top of the standard more commonly known article.cls style formatting which is similar to many journal styles apart from titlepage details. The MG variation of the World Scientific proceedings macros removes the white space above the title, to give more text space for short articles.
+In SpaceWarps, a community of over 30'000 volunteers searched for lensed candidates
+in the CFHT Legacy Survey. About 60 new lens candidates have been identified, along
+with rediscovery of 60\% of the previously-known candidates.
+
+Models of most of these lens candidates were produced collaboratively by a small
+community of lens enthusiasts from the volunteer community. Tests with simulated
+lenses show that models by experienced volunteers are comparable to those by
+experts.
+
+We will present lens models of some these newly discovered lens candidates, along
+with a modelling method developed to be usable in a citizen-science environment.
+Preliminary results comparing stellar and lensing masses will also be
+presented.
 \end{abstract}
 
-\keywords{Sample file; \LaTeX; MG14 Proceedings; World Scientific Publishing.}
+
+\keywords{Gravitational Lensing: strong; methods: numerical; MG14 Proceedings}
+
 
 \bodymatter
 
 %%%%%%%%%%%%%%%%% now a standard article style for the most part
 
-\section{The First Section: Titles are Capitalized with the Usual First Letter Rules}
-\subsection{Subsections only have the first letter of the entire title capitalized}
 
-Subsections only have the first letter of the first word capitalized (except for words that are naturally capitalized). For a very short contribution it is not necessary to use the sectioning commands.
+\section{Introduction}
+as written in \icite{sw1} blabla
 
-You may also use the ``graphicx" package and use its related commands if you are already familiar with that figure insertion method. Word template files are discouraged, allowed as a last resort for those people who have some difficulties with \LaTeX.
+\section{Creating and Selecting Modells}
 
-Since the World Scientific proceedings style \cite{ws} uses numbered superscript citations of the bibliography items, one has to be careful to use 
-\verb|\refcite| to get a baseline normal size number to include in an in-line direct reference, best formatted in the style: 
- ``see Ref.$\sim$\verb|\refcite|\{\ldots\}" while normal superscript citations follow punctuation  as in ``.\verb|\cite|\{\ldots\}"  For example, here is an in line citation to Ref.~\refcite{arxiv}. On the other hand citations at the end of a sentence are done line this.\cite{lamp94}
+\section{Determing Lensing Mass}
 
-\subsection{You can safely ignore this}
+\section{Determing Stellar Mass}
 
-The white space above the title in the ws-procs975x65.cls document style is eliminated by commenting out two lines in the definition of the macro \verb|\title|, namely:\\  
- \verb|\vspace|*\{-14pt\} \\ \verb|\vskip| 59pt\\
-but you do not need to know this if you use the proceedings style files downloaded from the MG14 website. This gives a bit more space for text content in short articles.
 
-For MG14 \cite{mg14} only a preview PDF document will be collected (exported from your \LaTeX\ document) before the meeting takes place.
+\section{Conclusions}
 
-\section*{Acknowledgments}
+In this work we use the method presented and tested in \icite{kueng2015} to create models of all lens candidates discovered by \icite{sw2}.
+We determine the total (lensing) mass \Mlens of the candidates using the generated models and the stellar mass \Mstel using an interpolation with redshifts given in \icite{sw2} and the Salpeter Initial Mass Function (\icite{Salpeter1955}).
+We then plot the masses of the candidates and observe in \figref{frac}, that the stellar mass fraction is of the order of 20\%, with decreasing trend for the most massive galaxies, as expected for early type galaxies.
+We identify outliers with very low stellar masses that need further inspection.
 
-What a debt we all owe to Donald Knuth for his gift of \TeX\ to us and to Leslie Lamport as well for its \LaTeX\ child.
+\begin{figure}
+\centering
+\includegraphics[width=0.8\columnwidth]{img/plot}
+\caption{Stellar Mass \Mstel vs. Lensing Mass \Mlens. Stellar Mass errors are the difference between junior and senior population, Lensing Mass errors represent the minimum and maximum values of an ensemble (``a model'').}
+\label{fig:frac}
+\end{figure}
+
+
+%\section*{Acknowledgments}
 
 
 \bibliographystyle{ws-procs975x65}
-\bibliography{bibl}
+\bibliography{ms}
+
+
+
+% \section{The First Section: Titles are Capitalized with the Usual First Letter Rules}
+% \subsection{Subsections only have the first letter of the entire title capitalized}
+% 
+% Subsections only have the first letter of the first word capitalized (except for words that are naturally capitalized). For a very short contribution it is not necessary to use the sectioning commands.
+% 
+% You may also use the ``graphicx" package and use its related commands if you are already familiar with that figure insertion method. Word template files are discouraged, allowed as a last resort for those people who have some difficulties with \LaTeX.
+% 
+% Since the World Scientific proceedings style \cite{ws} uses numbered superscript citations of the bibliography items, one has to be careful to use 
+% \verb|\refcite| to get a baseline normal size number to include in an in-line direct reference, best formatted in the style: 
+%  ``see Ref.$\sim$\verb|\refcite|\{\ldots\}" while normal superscript citations follow punctuation  as in ``.\verb|\cite|\{\ldots\}"  For example, here is an in line citation to Ref.~\refcite{arxiv}. On the other hand citations at the end of a sentence are done line this.\cite{lamp94}
+% 
+% \subsection{You can safely ignore this}
+% 
+% The white space above the title in the ws-procs975x65.cls document style is eliminated by commenting out two lines in the definition of the macro \verb|\title|, namely:\\  
+%  \verb|\vspace|*\{-14pt\} \\ \verb|\vskip| 59pt\\
+% but you do not need to know this if you use the proceedings style files downloaded from the MG14 website. This gives a bit more space for text content in short articles.
+% 
+% For MG14 \cite{mg14} only a preview PDF document will be collected (exported from your \LaTeX\ document) before the meeting takes place.
+% 
+% \section*{Acknowledgments}
+% 
+% What a debt we all owe to Donald Knuth for his gift of \TeX\ to us and to Leslie Lamport as well for its \LaTeX\ child.
+
+
 
 \end{document}
 
