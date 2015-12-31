@@ -183,15 +183,21 @@ presented.
 \section{Introduction}
 
 Gravitational lenses (GL), prediced by A. Einstein's General Relativity in 1915 have become an important tool in cosmology.
-Strong lensing can be used to infer the distribution of dark matter around galaxies (e.g. \icite{Koopans2009}), to find the relation between stars and dark matter (\icite{Leier2011}) or to infer cosmological parameters (\icite{Sereno2014}).
+Strong lensing can be used to infer the distribution of dark matter around galaxies\cite{Koopans2009}, to find the relation between stars and dark matter\cite{Leier2011} or to infer cosmological parameters\cite{Sereno2014}.
 
-Current surveys resulted in a few hundred of known lenses.
-For example in the Space Warps project (\icite{sw1,sw2}), carried out on the 170 square degree Canada--France--Hawaii Telescope Legacy Survey (CFHTLS), over 30'000 volunteers found 59 candidate lenses.
-As a rough estimate, this is one lens every few square degree.
+Current surveys resulted in more than 400 known lenses.
+For example in the Space Warps project\cite{sw1}, carried out on the 170 square degree Canada--France--Hawaii Telescope Legacy Survey (CFHTLS), over 30'000 volunteers found 59 candidate lenses\cite{sw2}.
 
-Imaging surveys under way will increase the observation area by a factor of ten and next gen surveys starting in the twenty-twenties will increase the resolution by another factor of ten.\scite{Marshall2005,OguriMarshall2010}
+As a rough estimate, this results in one lens every few square degree.
+Imaging surveys under way will increase the observation area by a factor of ten and next generation surveys starting in the twenty-twenties will increase the resolution leading to another factor of ten.\cite{Marshall2005,OguriMarshall2010}
 This raises expectations that the number of lenses will increase a hundred fold, leading to an order of 10'000 lenses over the next 10 years.
-Thats of order one possible lens detection per hour.
+Thats of order one potential lens detection per hour for the next 10 years.
+
+Software robots in combination with the citizen science project \sw are proposed to classify that amount of raw data and identify possible lens candidates.\cite{Marshall2009,sw1}
+For the modelling of the mass distribution of the lenses --- an essential part of any research involving lenses --- we propose to involve citizen scientists as well and present a concept, that has already been implemented and tested\cite{Kueng2015}: \spl.
+
+
+
 
 
 
@@ -214,6 +220,10 @@ Thats of order one possible lens detection per hour.
 Detecting lenses: robots + \sw
 
 post processing (modelling): robots? no; citicen science!
+
+
+
+
 
 Theory (short summary from \icite{Kueng2015})
 
@@ -259,7 +269,7 @@ for this analysis, models from the tree were selected manually by inspection by 
 
 \section{Determing Lensing and Stellar Mass}
 
-The lensing mass can directly be extracted from the generated models, as the mass distribution is the key feature that is being modelled (\icite{Kueng2015}).
+The lensing mass can directly be extracted from the generated models, as the mass distribution is the key feature that is being modelled\cite{Kueng2015}.
 Since a single model actually consists of an ensemble of a number of models, where each one is a possible configuration, we get an approximation of the error by selecting the models with minimal/ maximal total mass as lower / upper bounds for the errors.
 
 We estimated the stellar mass with:
@@ -267,15 +277,15 @@ We estimated the stellar mass with:
   \Mstel = 10^{0.4 [\operatorname{mag}(z_\text{ph}) - m_\text{i}]}
 \]
 where
-$z_\text{ph}$ and $m_\text{i}$ are the photometric redshift and luminosity given in \icite{sw2} and 
-$\operatorname{mag}()$ is a function obtained by interpolating data of SDSS-i magnitude (AB) of 1\Msun and actual mass vs redshift BC03 models (\icite{Bruzual2003}), Salpeter Initial Mass Function and assumes ``vanilla cosmology'' ($\Omega_\text{M}=0.3$, $\Omega_\Lambda=0.7$).\scite{Ferreras2010}
+$z_\text{ph}$ and $m_\text{i}$ are the photometric redshift and luminosity given in [\refcite{sw2}] and 
+$\operatorname{mag}()$ is a function obtained by interpolating data of SDSS-i magnitude (AB) of 1\Msun and actual mass vs redshift BC03 models\cite{Bruzual2003}, Salpeter Initial Mass Function and assumes ``vanilla cosmology'' ($\Omega_\text{M}=0.3$, $\Omega_\Lambda=0.7$).\cite{Ferreras2010}
 For the lower bound of the error we assumed a young population (0.5 Gyr), whereas for the upper one of 2 Gyr.
 
 
 \section{Conclusions}
 
-In this work we use the method presented and tested in \icite{Kueng2015} to create models of all lens candidates discovered by \icite{sw2}.
-We determine the total (lensing) mass \Mlens of the candidates using the generated models and the stellar mass \Mstel using an interpolation of a Salpeter Initial Mass Function (\icite{Salpeter1955}) with redshifts and luminosity magnitudes given in \icite{sw2}.
+In this work we use the method presented and tested\cite{Kueng2015} to create models of all lens candidates discovered by the first run of \sw\cite{sw2}.
+We determine the total (lensing) mass \Mlens of the candidates using the generated models and the stellar mass \Mstel using an interpolation of a Salpeter Initial Mass Function\cite{Salpeter1955} with redshifts and luminosity magnitudes given in [\refcite{sw2}].
 We then plot the masses of the candidates and observe in \figref{frac} that the stellar mass fraction is of the order of 20\%, with decreasing trend for the most massive galaxies, as expected for early type galaxies.
 We identify outliers with very low stellar masses that need further inspection.
 
@@ -288,7 +298,7 @@ We identify outliers with very low stellar masses that need further inspection.
 
 
 \section*{Acknowledgments}
-RK thanks the Candoc Grant (UZH Forschungskredit) for their support of this work.
+RK thanks the Candoc Forschungskredit of the University of Zurich for their support of this work.
 
 \bibliographystyle{ws-procs975x65}
 \bibliography{ms}
