@@ -2,9 +2,13 @@
 \documentclass{ws-procs975x65}
 % optional packages
 
+
 \usepackage[T1]{fontenc}
-\usepackage[utf8]{inputenc}
-\usepackage{graphicx}
+% you should really always use T1 fonts! even as a native english writer.. see:
+% http://tex.stackexchange.com/questions/664/why-should-i-use-usepackaget1fontenc
+
+%\usepackage[utf8]{inputenc}
+%\usepackage{graphicx}
 \usepackage{xspace}
 
 
@@ -48,8 +52,9 @@
 %\newcommand{\kap}[1][r]{$\kappa(#1)$\xspace}
 
 % shorcuts for refs and citations
-\newcommand{\icite}[1]{Ref.~\refcite{#1}} % *I*nline citation
-\newcommand{\scite}[1]{\cite{#1}} % end of *S*entence citation
+\newcommand{\icite}[1]{Ref.~\refcite{#1}}  % Direct *I*nline citation
+\newcommand{\ccite}[1]{(see \icite{#1})}   % ``(see Ref~ref)'' type citation
+\newcommand{\scite}[1]{\cite{#1}}          % end of *S*entence citation
 
 \newcommand{\figref}[1]{Fig.~\ref{fig:#1}}
 
@@ -81,7 +86,7 @@
 
 
 
-\title{Lensing Galaxies in the CFHT Legacy Survey}
+\title{Lensing galaxies in the CFHT Legacy Survey}
 
 \author{
   Rafael K\"ung$^*$, Prasenjit Saha
@@ -137,38 +142,14 @@ $^*$E-mail: rafael\_kueng@uzh.ch
 
 
 
-% \title{Short Sample Template File for MG14: \\ Include Full First Names}
-% \author{Andrew B. Author$^*$ and Charles D. Author}
-% 
-% \address{University Department, University Name,\\
-% City, State ZIP/Zone, Country\\
-% $^*$E-mail: ab\_author@university.com\\
-% www.university\_name.edu}
-% 
-% \author{Anthony N. Author} 
-% 
-% \address{Group, Laboratory, Street,\\
-% City, State ZIP/Zone, Country\\
-% E-mail: an\_author@laboratory.com}
-
-
-
-
 
 \begin{abstract}
-In SpaceWarps, a community of over 30'000 volunteers searched for lensed candidates
-in the CFHT Legacy Survey. 59 new lens candidates have been identified, along
-with rediscovery of 60\% of the previously-known candidates.
+In SpaceWarps, a community of over 30,000 volunteers searched for lensed candidates in the CFHT Legacy Survey.
+59 new lens candidates have been identified, along with rediscovery of 60\% of the previously-known candidates.
 
-Models of most of these lens candidates were produced collaboratively by a small
-community of lens enthusiasts from the volunteer community. Tests with simulated
-lenses show that models by experienced volunteers are comparable to those by
-experts.
-
-We will present lens models of some these newly discovered lens candidates, along
-with a modelling method developed to be usable in a citizen-science environment.
-Preliminary results comparing stellar and lensing masses will also be
-presented.
+Models of most of these lens candidates were produced collaboratively by a small community of lens enthusiasts from the volunteer community.
+Tests with simulated lenses show that models by experienced volunteers are comparable to those by experts.
+We present lens models of some of these newly discovered lens candidates, along with a modelling method developed to be usable in a citizen-science environment.
 \end{abstract}
 
 
@@ -183,24 +164,24 @@ presented.
 \section{Introduction}
 
 Gravitational lenses (GL), prediced by A. Einstein's General Relativity in 1915 have become an important tool in cosmology.
-Strong lensing can be used to infer the distribution of dark matter around galaxies \icite{Koopans2009}, to find the relation between stars and dark matter \icite{Leier2011} or to infer cosmological parameters \icite{Sereno2014}.
+Strong lensing can be used to infer the distribution of dark matter around galaxies \ccite{Koopans2009}, to find the relation between stars and dark matter \ccite{Leier2011} or to infer cosmological parameters \ccite{Sereno2014}.
 
 Current surveys resulted in more than 400 known lenses.
-For example in the \sw project \icite{sw1}, carried out on the 170 square degree Canada--France--Hawaii Telescope Legacy Survey (CFHTLS), over 30'000 volunteers found 59 candidate lenses \icite{sw2}.
+For example in the \sw project, carried out on the 170 square degree Canada--France--Hawaii Telescope Legacy Survey (CFHTLS), over 30,000 volunteers found 59 candidate lenses.\scite{sw1,sw2}
 
 As a rough estimate, this results in one lens every few square degree.
-Imaging surveys under way will increase the observation area by a factor of ten and next generation surveys starting in the twenty--twenties will increase the resolution leading to another factor of ten.\scite{Marshall2005,OguriMarshall2010}
-This raises expectations that the number of lenses will increase a hundred fold, leading to an order of 10'000 lenses over the next 10 years.
-Thats of order one potential lens detection per hour for the next 10 years.
+Imaging surveys under way will increase the observation area by a factor of ten and next generation surveys starting in the twenty--twenties will increase the resolution leading to another increase by a factor of ten.\scite{Marshall2005,OguriMarshall2010}
+This raises expectations that the number of lenses will increase a hundred fold, leading to an order of 10,000 lenses over the next 10 years.
+That's of order one potential lens detection per hour for the next 10 years.
 
 Software robots in combination with the citizen science project \sw are proposed to classify that amount of raw data and identify possible lens candidates.\scite{Marshall2009,sw1}
-For the modelling of the mass distribution of the lenses --- an essential part of any research involving lenses --- we propose to involve citizen scientists as well and present a concept, that has already been implemented and tested \icite{Kueng2015}: \spl.
+For the modelling of the mass distribution of the lenses --- an essential part of any research involving lenses --- we propose to involve citizen scientists as well and present a concept, that has already been implemented and tested: \spl.\scite{Kueng2015}
 
 
 \section{Theoretical Background and Implementation}
 
 This section is a short summary from \icite{Kueng2015} and recaps the basic concepts of \spl.
-It follows the formaulation of Fermat's principle by \icite{Blandford1986}.
+It follows the formaulation of Fermat's principle as described by \icite{Blandford1986}.
 
 Consider a lens at redshift $z_L$ away from the observer with a planar mass distribution $\propto\kappa(x,y)$, the convergence.
 Imagine a light source at distance $z_s$, behind the point $(x_s,y_s)$ on the lens.
@@ -221,9 +202,9 @@ and the second the delay due to general relativity:
 
 The arrival time surface $t(x,y)$ applies to virtual photons.
 Real photons take paths where $t(x,y)$ is stationary, due to Fermat's principle.
-This arrival time surface has an exact relation to the lens-mass distribution und the source position.
-A simple sketch of the surface (location of minima, maxima and the saddlepoint self intersection contour) is thus a sufficient starting point for finding a mass distribution $\kappa(x,y)$. The exact sampling techique is described in detail in \icite{Lubini2012}.
-What is called a \spl model is actually an ensemble of 200 models, each a possible solution, and the uncertainty is the range of parameters covered by all the models of the whole ensemble.
+This arrival time surface has an exact relation to the lens-mass distribution and the source position.
+A simple sketch of this surface (i.e. the location of minimas, maximas and saddle points, and the self intersection contours though a saddle point) is thus a sufficient starting point for finding a lensing mass distribution $\kappa(x,y)$. The exact sampling techique is described in detail in \icite{Lubini2012}.
+What is called a \spl model is actually an ensemble of 200 models, each a possible solution to the constraints, and the uncertainty is the range of parameters covered by all the models of the whole ensemble.
 
 
 \section{Analysing the \sw Candidates}
@@ -270,7 +251,7 @@ For the lower bound of the error we assumed a young population (0.5 Gyr), wherea
 
 \section{Conclusions}
 
-In this work we use the method presented and tested \icite{Kueng2015} to create models of all lens candidates discovered by the first run of \sw\icite{sw2}.
+In this work we use the method presented and tested in \icite{Kueng2015} to create models of all lens candidates discovered by the first run of \sw\icite{sw2}.
 We determine the total (lensing) mass \Mlens of the candidates using the generated models and the stellar mass \Mstel using an interpolation of a Salpeter Initial Mass Function \icite{Salpeter1955} with redshifts and luminosity magnitudes given in \icite{sw2}.
 We then plot the masses of the candidates and observe in \figref{frac} that the stellar mass fraction is of the order of 20\%, with decreasing trend for the most massive galaxies, as expected for early type galaxies.
 We identify outliers with very low stellar masses that need further inspection.
