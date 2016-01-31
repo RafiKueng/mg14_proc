@@ -71,9 +71,9 @@
 
 
 % shortcut for ASW000xxxx
-\newcommand{\asw}[1]{ASW000#1\xspace}
-\newcommand{\model}[2][Model~]{#1#2\xspace}
-\newcommand{\swid}[1]{SW~#1\xspace}
+\newcommand{\ASW}[1]{ASW000#1\xspace}
+%\newcommand{\model}[2][Model~]{#1#2\xspace}
+\newcommand{\SW}[1]{SW~#1\xspace}
 
 
 \newcommand{\dgr}{^{\circ}}
@@ -198,7 +198,8 @@ and the second the delay due to general relativity:
 The arrival time surface $t(x,y)$ applies to virtual photons.
 Real photons take paths where $t(x,y)$ is stationary, due to Fermat's principle.
 This arrival time surface has an exact relation to the lens-mass distribution and the source position.
-A simple sketch of this surface (i.e. the location of minima, maxima and saddle points, and the self intersection contour though saddle points) is thus a sufficient starting point for finding a corresponding lensing mass distribution $\kappa(x,y)$ with uncertainties. Further details about this approach and the technical implementation of the Metropolis-Hastings sampling technique are described in \icite{Lubini2012}.
+A simple sketch of this surface (i.e. the location of minima, maxima and saddle points, and the self intersection contour though saddle points) is thus a sufficient starting point for finding a corresponding lensing mass distribution $\kappa(x,y)$ with uncertainties.
+Further details about this approach and the technical implementation of the Metropolis-Hastings sampling technique are described in \icite{Lubini2012}.
 
 In \spl we ask volunteers to provide an intuitive guess of the arrival time surface based on the survey image to determine the mass distribution of a lens.
 We then immediately render the resulting model configuration to provide a direct visual feedback.
@@ -210,7 +211,7 @@ What is called a \spl model is actually an ensemble of 200 models, each a possib
   \centering
   \includegraphics[width=\columnwidth]{screenshot_new}
   \caption{
-    User interface of \spl. Left in the background the original image, overlayed the user input, a sketch of the arrival time surface. Right a rendered image of the model created using current user input.
+    User interface of \spl. Left in the background is the original CFHTLS image with overlayed user input, the sketch of a arrival time surface. The right side shows a rendered image of the model created using current user input.
   }
   \label{fig:ui}
 \end{figure}
@@ -218,52 +219,60 @@ What is called a \spl model is actually an ensemble of 200 models, each a possib
 
 \section{Analysing the \sw candidates}
 
-(too tired to write any good text now..
-something about that each candidate got modlelled multiple times, models were improved, and finally the best was selected) Sample tree of models is depicted in \figref{tree}
+A novel component presented in this work is the ability of the users to easily share and discuss their work with others.
+After creating a model, the volunteer uploads his results to the server and receives a link to an overview page containing various data of that model.
+These links can easily be shared to an online forum\footnote{\url{http://talk.spacewarps.org}}, allowing discussion amongst different volunteers.
+Using one of these links, other members of the community can try to revise existing models.
+This leads to a tree of models for a particular candidate.
 
-for this analysis, models from the tree were selected manually by inspection by PS, RK and the community.
+Feedback from experts and other modellers prune the tree to select the most probable models.
+An actual tree of models for the \sw lens candidate \SW{5} is shown in \figref{tree}.
+JW reported on a collaborative modelling effort of the early \sw candidate \SW{1} that resulted in a much larger tree of models in a letter published online.\footnote{\url{http://letters.zooniverse.org/letters/86-collaborative_gravitational_lens_modelling_using_spaghettilens_a_spacewarps_project}}
+
+
+%for this analysis, models from the tree were selected manually by inspection by PS, RK and the community.
 
 \begin{figure}
   \centering
   \includegraphics[width=\columnwidth]{modeltree}
   \caption{
-    Tree of models for the lens candidate SW5 (J143454.4+522850)
+    Tree of models for the \sw lens candidate \SW{5} (J143454.4+522850)
   }
   \label{fig:tree}
 \end{figure}
 
 
-
-\subsection{Determing lensing and stellar mass}
-
-In a next step, we extracted the total lensing mass and the stellar mass and compared the ratio, to get a first overview over the condidates and to reject possible non--lenses.
-
-The lensing mass can directly be extracted from the generated models, as the mass distribution is the key feature that is being modelled \icite{Kueng2015}.
-Since a single model actually consists of an ensemble of a number of models, where each one is a possible configuration, we get an approximation of the error by selecting the models with minimal/ maximal total mass as lower / upper bounds for the errors.
-
-We estimated the stellar mass with:
-\[
-  \Mstel = 10^{0.4 [\operatorname{mag}(z_\text{ph}) - m_\text{i}]}
-\]
-where
-$z_\text{ph}$ and $m_\text{i}$ are the photometric redshift and luminosity given in \icite{sw2} and 
-$\operatorname{mag}()$ is a function obtained by interpolating data of SDSS-i magnitude (AB) of 1\Msun and actual mass vs redshift BC03 models \icite{Bruzual2003}, Salpeter Initial Mass Function and assumes ``vanilla cosmology'' ($\Omega_\text{M}=0.3$, $\Omega_\Lambda=0.7$).\scite{Ferreras2010}
-For the lower bound of the error we assumed a young population (0.5 Gyr), whereas for the upper one of 2 Gyr.
-
-\begin{figure}
-  \centering
-  \includegraphics[width=0.8\columnwidth]{plot}
-  \caption{Stellar Mass \Mstel vs. Lensing Mass \Mlens. Stellar Mass errors are the difference between junior (0.5 Gyr) and senior (2 Gyr) population; Lensing Mass errors represent the minimum and maximum values of an ensemble (``a model'').}
-  \label{fig:frac}
-\end{figure}
+% 
+% \subsection{Determing lensing and stellar mass}
+% 
+% In a next step, we extracted the total lensing mass and the stellar mass and compared the ratio, to get a first overview over the condidates and to reject possible non--lenses.
+% 
+% The lensing mass can directly be extracted from the generated models, as the mass distribution is the key feature that is being modelled \icite{Kueng2015}.
+% Since a single model actually consists of an ensemble of a number of models, where each one is a possible configuration, we get an approximation of the error by selecting the models with minimal/ maximal total mass as lower / upper bounds for the errors.
+% 
+% We estimated the stellar mass with:
+% \[
+%   \Mstel = 10^{0.4 [\operatorname{mag}(z_\text{ph}) - m_\text{i}]}
+% \]
+% where
+% $z_\text{ph}$ and $m_\text{i}$ are the photometric redshift and luminosity given in \icite{sw2} and 
+% $\operatorname{mag}()$ is a function obtained by interpolating data of SDSS-i magnitude (AB) of 1\Msun and actual mass vs redshift BC03 models \icite{Bruzual2003}, Salpeter Initial Mass Function and assumes ``vanilla cosmology'' ($\Omega_\text{M}=0.3$, $\Omega_\Lambda=0.7$).\scite{Ferreras2010}
+% For the lower bound of the error we assumed a young population (0.5 Gyr), whereas for the upper one of 2 Gyr.
+% 
+% \begin{figure}
+%   \centering
+%   \includegraphics[width=0.8\columnwidth]{plot}
+%   \caption{Stellar Mass \Mstel vs. Lensing Mass \Mlens. Stellar Mass errors are the difference between junior (0.5 Gyr) and senior (2 Gyr) population; Lensing Mass errors represent the minimum and maximum values of an ensemble (``a model'').}
+%   \label{fig:frac}
+% \end{figure}
 
 
 \section{Conclusions}
 
-In this work we use the method presented and tested in \icite{Kueng2015} to create models of all lens candidates discovered by the first run of \sw.\scite{sw2}
-We determine the total (lensing) mass \Mlens of the candidates using the generated models and the stellar mass \Mstel using an interpolation of a Salpeter Initial Mass Function \icite{Salpeter1955} with redshifts and luminosity magnitudes given in \icite{sw2}.
-We then plot the masses of the candidates and observe in \figref{frac} that the stellar mass fraction is of the order of 20\%, with decreasing trend for the most massive galaxies, as expected for early type galaxies.
-We identify outliers with very low stellar masses that need further inspection.
+% In this work we use the method presented and tested in \icite{Kueng2015} to create models of all lens candidates discovered by the first run of \sw.\scite{sw2}
+% We determine the total (lensing) mass \Mlens of the candidates using the generated models and the stellar mass \Mstel using an interpolation of a Salpeter Initial Mass Function \icite{Salpeter1955} with redshifts and luminosity magnitudes given in \icite{sw2}.
+% We then plot the masses of the candidates and observe in \figref{frac} that the stellar mass fraction is of the order of 20\%, with decreasing trend for the most massive galaxies, as expected for early type galaxies.
+% We identify outliers with very low stellar masses that need further inspection.
 
 
 \section*{Acknowledgments}
