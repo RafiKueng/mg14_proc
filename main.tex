@@ -4,12 +4,14 @@
 
 
 \usepackage[T1]{fontenc}
+\usepackage{lmodern}
 % you should really always use T1 fonts! even as a native english writer.. see:
 % http://tex.stackexchange.com/questions/664/why-should-i-use-usepackaget1fontenc
 
-%\usepackage[utf8]{inputenc}
-%\usepackage{graphicx}
 \usepackage{xspace}
+% xspace makes sure that spaces after custom commands are always right.
+% "... \cmd bla..." vs "... \cmd, bla..." and other such cases, also in mathmode..
+
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -53,7 +55,7 @@
 
 % shorcuts for refs and citations
 \newcommand{\icite}[1]{Ref.~\refcite{#1}}  % Direct *I*nline citation
-\newcommand{\ccite}[1]{(see \icite{#1})}   % ``(see Ref~ref)'' type citation
+\newcommand{\ccite}[1]{(see \icite{#1})}   % "(see Ref~ref)" type citation. see=c
 \newcommand{\scite}[1]{\cite{#1}}          % end of *S*entence citation
 
 \newcommand{\figref}[1]{Fig.~\ref{fig:#1}}
@@ -71,6 +73,7 @@
 % shortcut for ASW000xxxx
 \newcommand{\asw}[1]{ASW000#1\xspace}
 \newcommand{\model}[2][Model~]{#1#2\xspace}
+\newcommand{\swid}[1]{SW~#1\xspace}
 
 
 \newcommand{\dgr}{^{\circ}}
@@ -88,63 +91,53 @@
 
 \title{Lensing galaxies in the CFHT Legacy Survey}
 
-\author{
-  Rafael K\"ung$^*$, Prasenjit Saha
-}
+\author{ Rafael K\"ung$^*$, Prasenjit Saha }
 \address{
-Physik-Institut, University of Zurich,\\
-Winterthurerstrasse 190, 8057 Zurich, Switzerland\\
-$^*$E-mail: rafael\_kueng@uzh.ch
-}
-\author{
-  Anupreeta More, Surhud More
-}
-\address{
-  Kavli Institute for the Physics and Mathematics of the Universe, University of Tokyo\\ 5-1-5 Kashiwanoha, Kashiwa-shi 277-8583, Japan
+  Physik-Institut, University of Zurich,\\
+  Winterthurerstrasse 190, 8057 Zurich, Switzerland\\
+  $^*$E-mail: rafael\_kueng@uzh.ch
 }
 
-\author{
-  Elisabeth Baeten, Claude Cornen, Christine Macmillan, Julianne K. Wilcox
-}
-\address{
-  Zooniverse, c/o Astrophysics Department, University of Oxford\\
-  Oxford OX1 3RH, UK
-}
-
-\author{
-  Jonathan Coles
-}
+\author{ Jonathan Coles }
 \address{
   Exascale Research Computing Lab, Campus Teratec,\\
   2 Rue de la Piquetterie, 91680 Bruyeres-le-Chatel, France
 }
 
-\author{Ignacio Ferreras}
-\address{Mullard Space Science Laboratory, University College London, Holmbury St Mary, Dorking, Surrey RH5 6NT, UK}
-
-\author{
-  Phil Marshall
+\author{ Ignacio Ferreras }
+\address{
+  Mullard Space Science Laboratory, University College London, Holmbury St Mary, Dorking, Surrey RH5 6NT, UK
 }
+
+\author{ Phil Marshall }
 \address{
   Kavli Institute for Particle Astrophysics and Cosmology, Stanford University\\
   452 Lomita Mall, Stanford, CA 94035, USA
 }
 
-\author{
-  Aprajita Verma
+\author{ Anupreeta More, Surhud More }
+\address{
+  Kavli Institute for the Physics and Mathematics of the Universe, University of Tokyo\\ 5-1-5 Kashiwanoha, Kashiwa-shi 277-8583, Japan
 }
+
+\author{ Aprajita Verma }
 \address{
   Sub-department of Astrophysics, University of Oxford, Denys Wilkinson Building\\
   Keble Road, Oxford, OX1 3RH, UK
 }
 
+\author{ Elisabeth Baeten, Claude Cornen, Christine Macmillan, Julianne K. Wilcox }
+\address{
+  Zooniverse, c/o Astrophysics Department, University of Oxford\\
+  Oxford OX1 3RH, UK
+}
 
 
 
 
 
 \begin{abstract}
-In SpaceWarps, a community of over 30\,000 % note: SI rules forbid to use , or . for separation of 1000th (9. conference, 1948, Resolution 7) http://www.bipm.org/en/CGPM/db/9/7/
+In SpaceWarps, a community of over 30\,000 % note: SI rule forbids to use , or . for separation of 1000th (9. conference, 1948, Resolution 7) http://www.bipm.org/en/CGPM/db/9/7/
 volunteers searched for lensed candidates in the CFHT Legacy Survey.
 59 new lens candidates have been identified, along with rediscovery of 60\% of the previously-known candidates.
 
@@ -177,6 +170,7 @@ That's of order one potential lens detection per hour for the next 10 years.
 
 Software robots in combination with the citizen science project \sw are proposed to classify that amount of raw data and identify possible lens candidates.\scite{Marshall2009,sw1}
 For the modelling of the mass distribution of the lenses --- an essential part of any research involving lenses --- we propose to involve citizen scientists as well and present a concept, that has already been implemented and tested: \spl.\scite{Kueng2015}
+In this work, we present \spl and a novel extension that facilitates the cooperation among the volunteers.
 
 
 \section{Theoretical background and implementation}
@@ -188,24 +182,38 @@ Consider a lens at redshift $z_L$ away from the observer with a planar mass dist
 Imagine a light source at distance $z_s$, behind the point $(x_s,y_s)$ on the lens.
 A photon flying from the source through the lens at $(x,y)$ to the observer will have an increased light travel time compared to the direct way through $(x_s,y_s)$.
 The time delay can be expressed as two parts:
-\begin{equation}  \label{eq:tarriv}
-t(x,y) = t_{\rm geom} + t_{\rm grav} ,
-\end{equation}
+\begin{equation*}  \label{eq:tarriv}
+  t(x,y) = t_{\rm geom} + t_{\rm grav} ,
+\end{equation*}
 where the first part represents a geometrical time delay,
-\begin{equation} \label{eq:tgeom}
-\tgeom(x,y) \propto (x-x_s)^2 + (y-y_s)^2 ,
-\end{equation}
+\begin{equation*} \label{eq:tgeom}
+  \tgeom(x,y) \propto (x-x_s)^2 + (y-y_s)^2 ,
+\end{equation*}
 and the second the delay due to general relativity:
-\begin{equation} \label{eq:tgrav}
-\tgrav(x,y) = \left\langle \tgrav(x_\subcirc,y_\subcirc) \right\rangle
-              + (1+z_L) \frac{2G}{c^3} M(x_\subbullet,y_\subbullet) \,.
-\end{equation}
+\begin{equation*} \label{eq:tgrav}
+  \tgrav(x,y) = \left\langle \tgrav(x_\subcirc,y_\subcirc) \right\rangle
+                + (1+z_L) \frac{2G}{c^3} M(x_\subbullet,y_\subbullet) \,.
+\end{equation*}
 
 The arrival time surface $t(x,y)$ applies to virtual photons.
 Real photons take paths where $t(x,y)$ is stationary, due to Fermat's principle.
 This arrival time surface has an exact relation to the lens-mass distribution and the source position.
-A simple sketch of this surface (i.e. the location of minima, maxima and saddle points, and the self intersection contour though saddle points) is thus a sufficient starting point for finding a lensing mass distribution $\kappa(x,y)$. Further details about the Metropolis-Hastings sampling technique are described in \icite{Lubini2012}.
+A simple sketch of this surface (i.e. the location of minima, maxima and saddle points, and the self intersection contour though saddle points) is thus a sufficient starting point for finding a corresponding lensing mass distribution $\kappa(x,y)$ with uncertainties. Further details about this approach and the technical implementation of the Metropolis-Hastings sampling technique are described in \icite{Lubini2012}.
+
+In \spl we ask volunteers to provide an intuitive guess of the arrival time surface based on the survey image to determine the mass distribution of a lens.
+We then immediately render the resulting model configuration to provide a direct visual feedback.
+This direct feedback allows the user to improve upon his initial guess and to match the two images.
+The user interface depicting this process is shown in \figref{ui}.
 What is called a \spl model is actually an ensemble of 200 models, each a possible solution to the constraints. The uncertainty is the range of parameters covered by all the models of the whole ensemble.
+
+\begin{figure}
+  \centering
+  \includegraphics[width=\columnwidth]{screenshot_new}
+  \caption{
+    User interface of \spl. Left in the background the original image, overlayed the user input, a sketch of the arrival time surface. Right a rendered image of the model created using current user input.
+  }
+  \label{fig:ui}
+\end{figure}
 
 
 \section{Analysing the \sw candidates}
@@ -217,7 +225,7 @@ for this analysis, models from the tree were selected manually by inspection by 
 
 \begin{figure}
   \centering
-  \includegraphics[width=\columnwidth]{img/modeltree}
+  \includegraphics[width=\columnwidth]{modeltree}
   \caption{
     Tree of models for the lens candidate SW5 (J143454.4+522850)
   }
@@ -244,7 +252,7 @@ For the lower bound of the error we assumed a young population (0.5 Gyr), wherea
 
 \begin{figure}
   \centering
-  \includegraphics[width=0.8\columnwidth]{img/plot}
+  \includegraphics[width=0.8\columnwidth]{plot}
   \caption{Stellar Mass \Mstel vs. Lensing Mass \Mlens. Stellar Mass errors are the difference between junior (0.5 Gyr) and senior (2 Gyr) population; Lensing Mass errors represent the minimum and maximum values of an ensemble (``a model'').}
   \label{fig:frac}
 \end{figure}
@@ -252,7 +260,7 @@ For the lower bound of the error we assumed a young population (0.5 Gyr), wherea
 
 \section{Conclusions}
 
-In this work we use the method presented and tested in \icite{Kueng2015} to create models of all lens candidates discovered by the first run of \sw\icite{sw2}.
+In this work we use the method presented and tested in \icite{Kueng2015} to create models of all lens candidates discovered by the first run of \sw.\scite{sw2}
 We determine the total (lensing) mass \Mlens of the candidates using the generated models and the stellar mass \Mstel using an interpolation of a Salpeter Initial Mass Function \icite{Salpeter1955} with redshifts and luminosity magnitudes given in \icite{sw2}.
 We then plot the masses of the candidates and observe in \figref{frac} that the stellar mass fraction is of the order of 20\%, with decreasing trend for the most massive galaxies, as expected for early type galaxies.
 We identify outliers with very low stellar masses that need further inspection.

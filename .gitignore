@@ -139,4 +139,10 @@ sympy-plots-for-*.tex/
 .directory
 *.backup
 
-mg14proc.pdf
+main.zip
+main.pdf
+img/*.pdf
+img/*.png
+img/*.jpg
+img/org/*
+

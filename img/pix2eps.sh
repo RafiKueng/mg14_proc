@@ -1,7 +1,7 @@
 #!/bin/bash
 
-for f in *.pdf; do
-  g=`echo "$f" | sed 's/\.pdf$/\.eps/'`
+for f in *.png; do
+  g=`echo "$f" | sed 's/\.png$/\.eps/'`
   echo "$f -> $g" 1>&2
-  convert "$f" eps2:$g
+  convert "$f" eps3:$g
 done
