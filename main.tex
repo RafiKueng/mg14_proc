@@ -1,25 +1,25 @@
-% sample main.tex created 2015-03-26 by bob jantzen
+% 
+% Lensing galaxies in the CFHT Legacy Survey 
+% MG14 proceedings
+% 2016.02.01 -- rafael kueng <rafael.kueng@uzh.ch>
+%
+
 \documentclass{ws-procs975x65}
+
 % optional packages
 
-
-\usepackage[T1]{fontenc}
-\usepackage{lmodern}
-% you should really always use T1 fonts! even as a native english writer.. see:
+%\usepackage[T1]{fontenc}
+%\usepackage{lmodern}
+% I recommend always use T1 fonts, even as a native english writer.. see:
 % http://tex.stackexchange.com/questions/664/why-should-i-use-usepackaget1fontenc
+% make sure to include a T1 then (lmodern)
 
 \usepackage{xspace}
 % xspace makes sure that spaces after custom commands are always right.
 % "... \cmd bla..." vs "... \cmd, bla..." and other such cases, also in mathmode..
 
-
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % a few author defined macros like:
-%\def\beq{\begin{equation}}
-%\def\eeq{\end{equation}}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % shortcuts for pubs
 \newcommand{\apj}{ApJ}
@@ -35,59 +35,43 @@
 \newcommand{\nat}{Nature}
 \newcommand{\nar}{New Astr Rev}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % makes it easier to have consistent writing, and easy change if needed
 \newcommand{\spl}{SpaghettiLens\xspace}
 \newcommand{\sw}{Space Warps\xspace}
 
 \newcommand{\Msun}{\ensuremath{\text{M}_\odot}\xspace}
-
 \newcommand{\Mlens}{\ensuremath{\text{M}_\text{lens}}\xspace}
 \newcommand{\Mstel}{\ensuremath{\text{M}_\odot}\xspace}
 
-% shortcut for einstein radius (Text Greek Full Math)
-\newcommand{\ERf}[1][]{$\Theta_\text{E#1}$\xspace} % full output
-%\newcommand{\ER}{Einstein radius\xspace} % text
-%\newcommand{\ERg}[1][]{$\Theta_{\text{E#1}}$\xspace} % er in textmode with greek
-%\newcommand{\ERm}[1][]{\Theta_\text{E#1}} % mathmode with greek symbol
-%\newcommand{\kenc}[1][r]{$\kappa_\text{encl}(#1)$\xspace}
-%\newcommand{\kap}[1][r]{$\kappa(#1)$\xspace}
-
-% shorcuts for refs and citations
-\newcommand{\icite}[1]{Ref.~\refcite{#1}}  % Direct *I*nline citation
-\newcommand{\ccite}[1]{(see \icite{#1})}   % "(see Ref~ref)" type citation. see=c
-\newcommand{\scite}[1]{\cite{#1}}          % end of *S*entence citation
-
-\newcommand{\figref}[1]{Fig.~\ref{fig:#1}}
-
-%\newcommand{\fref}[1]{\ref{fig:#1}}
-%\newcommand{\sref}[1]{\ref{sec:#1}}
-%\newcommand{\tref}[1]{\ref{tab:#1}}
-%\newcommand{\secref}[1]{Section~\ref{sec:#1}}
-%\newcommand{\tabref}[1]{Table~\ref{tab:#1}}
-%\newcommand{\Figref}[1]{Figure~\ref{fig:#1}}
-%\newcommand{\Secref}[1]{Section~\ref{sec:#1}}
-%\newcommand{\Tabref}[1]{Table~\ref{tab:#1}}
-
-
-% shortcut for ASW000xxxx
-\newcommand{\ASW}[1]{ASW000#1\xspace}
-%\newcommand{\model}[2][Model~]{#1#2\xspace}
-\newcommand{\SW}[1]{SW~#1\xspace}
-
-
-\newcommand{\dgr}{^{\circ}}
+%\newcommand{\dgr}{^{\circ}}
 \newcommand{\tgeom}{t_{\rm geom}}
 \newcommand{\tgrav}{t_{\rm grav}}
 \newcommand{\subcirc}{{\lower.33ex\hbox{$\circ$}}}
 \newcommand{\subbullet}{{\lower.33ex\hbox{$\bullet$}}}
+%\newcommand{\kenc}[1][r]{$\kappa_\text{encl}(#1)$\xspace}
+%\newcommand{\kap}[1][r]{$\kappa(#1)$\xspace}
 
+% shortcut for ASW000xxxx
+\newcommand{\ASW}[1]{ASW000#1\xspace}
+\newcommand{\SW}[1]{SW~#1\xspace}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% shortcuts for refs and citations
+\newcommand{\icite}[1]{Ref.~\refcite{#1}}  % Direct *I*nline citation
+\newcommand{\ccite}[1]{(see \icite{#1})}   % "(see Ref~ref)" type citation. see=c
+\newcommand{\scite}[1]{\cite{#1}}          % end of *S*entence citation
+
+\newcommand{\figref}[1]{Figure~\ref{fig:#1}}
+\newcommand{\tabref}[1]{Table~\ref{tab:#1}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 
 \begin{document}
-
-
 
 \title{Lensing galaxies in the CFHT Legacy Survey}
 
@@ -137,19 +121,18 @@
 
 
 \begin{abstract}
-In SpaceWarps, a community of over 30\,000 % note: SI rule forbids to use , or . for separation of 1000th (9. conference, 1948, Resolution 7) http://www.bipm.org/en/CGPM/db/9/7/
-volunteers searched for lensed candidates in the CFHT Legacy Survey.
-59 new lens candidates have been identified, along with rediscovery of 60\% of the previously-known candidates.
+In \sw, a community of over 30\,000 % note: SI rule forbids to use , or . for separation of 1000th (9. conference, 1948, Resolution 7) http://www.bipm.org/en/CGPM/db/9/7/
+volunteers searched for lensed candidates in the Canada--France--Hawaii Telescope Legacy Survey (CFHTLS).
+59 new lens candidates have been identified, along with rediscovery of 60\% of the previously-known candidates.\scite{sw2}
 
-Models of most of these lens candidates were produced collaboratively by a small community of lens enthusiasts from the volunteer community.
-Tests with simulated lenses show that models by experienced volunteers are comparable to those by experts.
-We present lens models of some of these newly discovered lens candidates, along with a modelling method developed to be usable in a citizen-science environment.
+We propose that volunteers should play an integral part in the modeling of lens candidates as well.
+We implemented \spl, a method allowing non-professionals to create mass models for those discovered lens candidates and to be usable in a citizen-science environment.
+Tests with simulated lenses show that models by experienced volunteers are comparable to those by experts.\scite{Kueng2015}
+We present models of most of the \sw lens candidates that were produced collaboratively by a small community of lens enthusiasts from the volunteer community.
+These models allow for further analysis.
 \end{abstract}
 
-
 \keywords{Gravitational Lensing: strong; methods: numerical}
-
-
 \bodymatter
 
 %%%%%%%%%%%%%%%%% now a standard article style for the most part
@@ -170,7 +153,7 @@ That's of order one potential lens detection per hour for the next 10 years.
 
 Software robots in combination with the citizen science project \sw are proposed to classify that amount of raw data and identify possible lens candidates.\scite{Marshall2009,sw1}
 For the modelling of the mass distribution of the lenses --- an essential part of any research involving lenses --- we propose to involve citizen scientists as well and present a concept, that has already been implemented and tested: \spl.\scite{Kueng2015}
-In this work, we present \spl and a novel extension that facilitates the cooperation among the volunteers.
+In this work we reintroduce \spl and present a novel extension that facilitates the cooperation among the volunteers, as well as an almost complete set of models for all of the lensing candidates presented in \icite{sw2}.
 
 
 \section{Theoretical background and implementation}
@@ -185,7 +168,7 @@ The time delay can be expressed as two parts:
 \begin{equation*}  \label{eq:tarriv}
   t(x,y) = t_{\rm geom} + t_{\rm grav} ,
 \end{equation*}
-where the first part represents a geometrical time delay,
+where the first part represents a geometrical time delay:
 \begin{equation*} \label{eq:tgeom}
   \tgeom(x,y) \propto (x-x_s)^2 + (y-y_s)^2 ,
 \end{equation*}
@@ -202,7 +185,7 @@ A simple sketch of this surface (i.e. the location of minima, maxima and saddle 
 Further details about this approach and the technical implementation of the Metropolis-Hastings sampling technique are described in \icite{Lubini2012}.
 
 In \spl we ask volunteers to provide an intuitive guess of the arrival time surface based on the survey image to determine the mass distribution of a lens.
-We then immediately render the resulting model configuration to provide a direct visual feedback.
+The resulting model configuration is then rendered to provide a direct visual feedback.
 This direct feedback allows the user to improve upon his initial guess and to match the two images.
 The user interface depicting this process is shown in \figref{ui}.
 What is called a \spl model is actually an ensemble of 200 models, each a possible solution to the constraints. The uncertainty is the range of parameters covered by all the models of the whole ensemble.
@@ -217,29 +200,35 @@ What is called a \spl model is actually an ensemble of 200 models, each a possib
 \end{figure}
 
 
-\section{Analysing the \sw candidates}
+\section{Collaborative modeling}
 
 A novel component presented in this work is the ability of the users to easily share and discuss their work with others.
-After creating a model, the volunteer uploads his results to the server and receives a link to an overview page containing various data of that model.
+After creating a model, the volunteer uploads his results to the server and receives a link to an overview page\footnote{Example model: \url{http://labs.spacewarps.org/spaghetti/model/AJIBCHQ6EM}} containing various data of that model.
 These links can easily be shared to an online forum\footnote{\url{http://talk.spacewarps.org}}, allowing discussion amongst different volunteers.
 Using one of these links, other members of the community can try to revise existing models.
 This leads to a tree of models for a particular candidate.
-
-Feedback from experts and other modellers prune the tree to select the most probable models.
+Feedback from experts and other modelers prune the tree to select the most plausible models.
 An actual tree of models for the \sw lens candidate \SW{5} is shown in \figref{tree}.
-JW reported on a collaborative modelling effort of the early \sw candidate \SW{1} that resulted in a much larger tree of models in a letter published online.\footnote{\url{http://letters.zooniverse.org/letters/86-collaborative_gravitational_lens_modelling_using_spaghettilens_a_spacewarps_project}}
-
-
-%for this analysis, models from the tree were selected manually by inspection by PS, RK and the community.
 
 \begin{figure}
   \centering
   \includegraphics[width=\columnwidth]{modeltree}
   \caption{
-    Tree of models for the \sw lens candidate \SW{5} (J143454.4+522850)
+    Tree of models for the \sw lens candidate \SW{5}
   }
   \label{fig:tree}
 \end{figure}
+
+
+JW reported on a collaborative modeling effort of the early \sw candidate \SW{1} that resulted in a much larger tree of models in a letter published online.\footnote{\url{http://letters.zooniverse.org/letters/86-collaborative_gravitational_lens_modelling_using_spaghettilens_a_spacewarps_project}}
+
+
+\section{Results: models for the candidates}
+
+We report a full set of model trees (351 unique models) for most of the 59 candidates presented in \icite{sw2} that allow for further analysis of the list of candidates.
+An overview is presented in \tabref{results}, where the count of created models and the extracted averaged total mass of the lenses are listed.
+The missing three candidates are particular challenging to model for the volunteers and need further investigation.
+
 
 
 % 
@@ -266,17 +255,59 @@ JW reported on a collaborative modelling effort of the early \sw candidate \SW{1
 %   \label{fig:frac}
 % \end{figure}
 
+\begin{table}
+\tbl{Overview over 351 created models by volunteers for the \sw candidates. Table shows \sw candidate id, number of models created and average total lensing mass extracted from the models}
+{
+\begin{tabular} { c  c  c | c  c  c }
+\toprule
+id   & count & total lensing mass & id   & count & total lensing mass\\
+&&$[\Msun]$&&&$[\Msun]$ \\\colrule
+\SW{1} & 115 & $5.21 \times 10^{12}$  &   \SW{31} & 6 & $5.44 \times 10^{12}$  \\
+\SW{2} & 6 & $1.49 \times 10^{12}$    &   \SW{32} & 7 & $3.80 \times 10^{12}$  \\
+\SW{3} & 1 & $8.99 \times 10^{12}$    &   \SW{33} & 1 & $1.30 \times 10^{12}$  \\
+\SW{4} & 2 & $9.85 \times 10^{12}$    &   \SW{34} & 1 & $8.76 \times 10^{11}$  \\
+\SW{5} & 12 & $1.17 \times 10^{13}$   &   \SW{35} & 2 & $1.17 \times 10^{12}$  \\
+\SW{6} & 7 & $7.48 \times 10^{11}$    &   \SW{36} & 2 & $1.10 \times 10^{12}$  \\
+\SW{7} & 4 & $3.28 \times 10^{13}$    &   \SW{37} & 1 & $2.38 \times 10^{12}$  \\
+\SW{8} & 3 & $1.96 \times 10^{12}$    &   \SW{38} & 3 & $2.92 \times 10^{12}$  \\
+\SW{9} & 5 & $3.00 \times 10^{12}$    &   \SW{39} & 0 & none  \\
+\SW{10} & 2 & $9.86 \times 10^{11}$   &   \SW{40} & 3 & $1.56 \times 10^{12}$  \\
+\SW{11} & 4 & $6.63 \times 10^{11}$   &   \SW{41} & 1 & $5.72 \times 10^{11}$  \\
+\SW{12} & 2 & $3.30 \times 10^{11}$   &   \SW{42} & 5 & $1.49 \times 10^{11}$  \\
+\SW{13} & 9 & $8.91 \times 10^{11}$   &   \SW{43} & 7 & $3.14 \times 10^{12}$  \\
+\SW{14} & 2 & $1.43 \times 10^{12}$   &   \SW{44} & 2 & $6.25 \times 10^{12}$  \\
+\SW{15} & 9 & $5.48 \times 10^{11}$   &   \SW{45} & 23 & $3.81 \times 10^{12}$  \\
+\SW{16} & 1 & $1.20 \times 10^{12}$   &   \SW{46} & 2 & $6.27 \times 10^{11}$  \\
+\SW{17} & 3 & $1.34 \times 10^{12}$   &   \SW{47} & 1 & $4.40 \times 10^{12}$  \\
+\SW{18} & 1 & $1.31 \times 10^{12}$   &   \SW{48} & 2 & $1.72 \times 10^{12}$  \\
+\SW{19} & 5 & $1.14 \times 10^{11}$   &   \SW{49} & 0 & none  \\
+\SW{20} & 16 & $8.87 \times 10^{11}$  &   \SW{50} & 4 & $5.44 \times 10^{12}$  \\
+\SW{21} & 6 & $4.40 \times 10^{12}$   &   \SW{51} & 6 & $4.48 \times 10^{12}$  \\
+\SW{22} & 5 & $1.19 \times 10^{12}$   &   \SW{52} & 3 & $1.60 \times 10^{12}$  \\
+\SW{23} & 2 & $3.58 \times 10^{12}$   &   \SW{53} & 2 & $3.08 \times 10^{12}$  \\
+\SW{24} & 1 & $6.61 \times 10^{11}$   &   \SW{54} & 3 & $1.18 \times 10^{12}$  \\
+\SW{25} & 0 & none                    &   \SW{55} & 8 & $1.38 \times 10^{12}$  \\
+\SW{26} & 3 & $1.19 \times 10^{12}$   &   \SW{56} & 1 & $1.03 \times 10^{12}$  \\
+\SW{27} & 7 & $5.06 \times 10^{11}$   &   \SW{57} & 1 & $5.10 \times 10^{12}$  \\
+\SW{28} & 2 & $1.85 \times 10^{12}$   &   \SW{58} & 2 & $7.12 \times 10^{12}$  \\
+\SW{29} & 15 & $1.35 \times 10^{12}$  &   \SW{59} & 1 & $5.49 \times 10^{12}$  \\
+\SW{30} & 1 & $1.50 \times 10^{10}$   &    & & \\
+\botrule
+\end{tabular}
+}
+\label{tab:results}
+\end{table}
+
 
 \section{Conclusions}
 
-% In this work we use the method presented and tested in \icite{Kueng2015} to create models of all lens candidates discovered by the first run of \sw.\scite{sw2}
-% We determine the total (lensing) mass \Mlens of the candidates using the generated models and the stellar mass \Mstel using an interpolation of a Salpeter Initial Mass Function \icite{Salpeter1955} with redshifts and luminosity magnitudes given in \icite{sw2}.
-% We then plot the masses of the candidates and observe in \figref{frac} that the stellar mass fraction is of the order of 20\%, with decreasing trend for the most massive galaxies, as expected for early type galaxies.
-% We identify outliers with very low stellar masses that need further inspection.
+In this work we use the method presented and tested in \icite{Kueng2015} to collaboratively create 351 models of all but three of the 59 lens candidates discovered by the first run of \sw.
+This collection of models and their parameters allow for further analysis, as demonstrated by the extraction of the total (lensing) mass \Mlens of the candidates using the generated models.
+For example, future analysis could show the relation between lensing mass \Mlens and stellar mass \Msun, determined by photometric redshift and luminosity given in \icite{sw2} to possibly reject some candidates.
 
 
 \section*{Acknowledgments}
-RK thanks the Candoc Forschungskredit of the University of Zurich for the support of this work.
+RK thanks the Candoc Forschungskredit of the University of Zurich for the support of this work and the \sw and in particular the modeling sub-community for their valuable work.
 
 \bibliographystyle{ws-procs975x65}
 \bibliography{ms}
